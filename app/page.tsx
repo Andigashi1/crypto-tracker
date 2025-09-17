@@ -5,7 +5,9 @@ const page = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const pageNumber = parseInt(params.page ?? '1', 10);
   return (
     <div>
-      <Market page={pageNumber} />
+      <div>
+        <Market page={pageNumber} />
+      </div>
     </div>
   );
 }
