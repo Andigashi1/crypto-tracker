@@ -1,8 +1,11 @@
 "use client";
 
 import { LineChart, Line, ResponsiveContainer } from "recharts";
+import { usePathname } from "next/navigation";
 
 const MiniChart = ({ data }: { data: number[] }) => {
+  const pathname = usePathname()
+
   const last24h = data.slice(-24);
   const first = last24h[0];
   const chartData = last24h.map((price, index) => ({
@@ -13,7 +16,7 @@ const MiniChart = ({ data }: { data: number[] }) => {
   const isPositive = first < last24h[last24h.length - 1]; ;
 
   return (
-    <div className="relative w-20 h-8">
+    <div className={`relative ${pathname === '/' ? 'w-20 h-8' : 'w-full aspect-[21/9]'}`}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData}>
           <Line
