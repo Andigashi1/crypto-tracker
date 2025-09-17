@@ -5,6 +5,8 @@ import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
+import SearchInput from "./SearchInput"
+
 const Nav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -17,15 +19,11 @@ const Nav = () => {
   ]
 
   return (
-    <div className="flex items-center justify-between px-4 lg:px-8 pt-2">
+    <div className="flex items-center justify-between pt-2">
       <p className="text-lg font-bold">Crypto Tracker</p>
       
       {/* Desktop: Centered input */}
-      <input
-        type="text"
-        className="hidden lg:block max-w-80 w-full bg-input px-3 py-2 rounded-md absolute left-1/2 transform -translate-x-1/2"
-        placeholder="Search Crypto"
-      />
+      <SearchInput isSearchOpen={isSearchOpen}/>
       
       {/* Desktop Links */}
       <div className="hidden lg:flex [&>*]:p-2 [&>*]:cursor-pointer">
@@ -60,12 +58,7 @@ const Nav = () => {
           <div className="inset-0 fixed top-0 bg-black/50 z-20" onClick={() => setIsSearchOpen(false)}></div>
           <div className="fixed top-0 left-0 right-0 bg-background z-30 p-4">
             <div className="flex items-center space-x-3">
-              <input
-                type="text"
-                className="flex-1 bg-input px-3 py-2 rounded-md"
-                placeholder="Search Crypto"
-                autoFocus
-              />
+              <SearchInput isSearchOpen={isSearchOpen}/>
               <X
                 size={24}
                 className="cursor-pointer"
