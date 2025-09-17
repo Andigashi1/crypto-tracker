@@ -30,7 +30,8 @@ const Market = async ({page}: {page: number}) => {
 
   const coins: Coin[] = await res.json();
   return (
-    <div className="px-8 mt-20 mb-10">
+    <div className="mt-20 mb-10">
+      <h2>All Coins</h2>
       <table className="w-full table-fixed">
         <thead className="">
           <tr className="text-left w-full text-gray-500">
